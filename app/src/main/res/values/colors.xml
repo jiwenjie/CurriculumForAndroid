@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#549cf8</color>
+    <color name="colorAccent">#EF5362</color>
+
+
+    <color name="blue">#3F51B5</color>
+    <color name="blue_dark">#303F9F</color>
+
+    <color name="red">#FF4081</color>
+
+    <color name="transparent">#0000</color>
+
+    <color name="black">#000</color>
+
+    <color name="white">#fff</color>
+
+    <color name="gray">#999</color>
+
+    <color name="color_gray">#9a9a9a</color>
+
+    <color name="color_gray_translucent">#5000</color>
+
+
+    <color name="app_color_theme_1">#EF5362</color> <!-- Grapefruit -->
+    <color name="app_color_theme_2">#FE6D4B</color> <!-- Bittersweet -->
+    <color name="app_color_theme_3">#FFCF47</color> <!-- Sunflower -->
+    <color name="app_color_theme_4">#9FD661</color> <!-- Grass -->
+    <color name="app_color_theme_5">#3FD0AD</color> <!-- Mint -->
+    <color name="app_color_theme_6">#2BBDF3</color> <!-- Aqua -->
+    <color name="app_color_theme_7">#00b0ff</color> <!-- Blue Jeans -->
+    <color name="app_color_theme_8">#AC8FEF</color> <!-- Lavender -->
+    <color name="app_color_theme_9">#EE85C1</color> <!-- Pink Rose -->
+
+    <color name="color_pink">#ff4081</color>
+    <color name="color_orange">#dd2c00</color>
+    <color name="color_blue_dark">#ee447AA4</color>
+
+    <!-- title 半透明背景颜色 -->
+    <color name="color_title_bg">#CCFFFFFF</color>
+    <!-- 默认背景色 -->
+    <color name="backgroundColor">#EEEEEE</color>
+
+    <!-- white -->
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_black">#000000</color>
+
+    <color name="color_blue">#87CEEB</color>
+
+    <!-- item 标题颜色 -->
+    <color name="color_item_title">#000000</color>
+
+    <color name="color_lighter_gray">#ddd</color>
+    <color name="color_darker_gray">#aaa</color>
+
+    <color name="color_division_line">@color/color_lighter_gray</color>
+
+    <color name="color_translucent">#00000000</color>
+
+    <color name="color_aquamarine">#7FFFD4</color>
+
+    <color name="color_light_black">#5000</color>
+
+    <color name="normal_orange">#ff6633</color>
+
+    <color name="sfa">#46A3FF</color>
+    <color name="sfaa">#66B3FF</color>
+    <color name="line">#e7e7e7</color>
+    <color name="main">#2395FF</color>
+    <color name="main_bg">#F5F5F5</color>
+    <color name="black_light">#3A3A3A</color>
+    <color name="orange">#FF5301</color>
+    <color name="red_light">#FF8880</color>
+    <color name="purple">#A577FB</color>
+
+    <color name="black_transparent">#8000</color>
+
+    <color name="text0">#464646</color>
+    <color name="text1">#7e7e7e</color>
+    <color name="text2">#969696</color>
+    <color name="text3">#c8969696</color>
+    <color name="text4">#DDDDDD</color>
+    <color name="text5">#EFEFEF</color>
+
+
+    <color name= "tab_nor_color">#969696</color>
+    <color name= "tab_sel_color">#2395FF</color>
+
+    <!--TabLayout-->
+    <color name="TabTextColor">#FFFFFF</color>
+    <color name="TabSelectColor">#FAFAFA</color>
+    <color name="TabIndicatorColor">#FFFFFF</color>
+
+    <color name="tab_text_unselected">#828990</color>
+
+    <color name="app_main_color">#3F51B5</color>
+    <color name="app_main_color_deep">#303F9F</color>
+
+    <color name="gray_light">#f4f4f4</color>
+
+    <color name="progress_end">#87CEEB</color>
+    <color name="progress_start">#87CEEB</color>
+
+    <color name="green">#15de33</color>
+    <color name="yellow_light">#f2eec2</color>
+    <color name="gray_black">#777575</color>
+
+    <color name="pink">#e65050</color>
+    <!--聊天文字的颜色-->
+    <color name="font_black_gray">#000</color>
+
+    <color name="deep_orange">#FF6600</color>
+    <color name="deep_gray">#bfbfbf</color>
+
+
+    <color name="half_transparent_black">#7a000000</color>
+
+    <!--配色-->
+    <color name="toolbar_text">#ffffff</color>
+    <color name="divider_line">#dddddd</color>
+    <color name="window_background">#303030</color>
+    <color name="special_text">#e51c23</color>
+
+    <color name="expanded_title">#607d8b</color>
+    <color name="collapsed_title">#ffffff</color>
+
+    <color name="photo_set_bg">#44000000</color>
+
+    <color name="item_special_bg">#FF4081</color>
+    <color name="item_photo_set_bg">#5677fc</color>
+    <color name="btn_press_bg">#ffbababa</color>
+
+    <color name="download_normal">#666666</color>
+    <color name="download_stop">#f57c00</color>
+    <color name="download_error">#fd4d51</color>
+
+    <color name="item_pressed">#33626262</color>
+    <color name="snackbar_bg">#ccf57c00</color>
+
+
+    <color name="textColorPrimary">#616161</color>
+    <color name="viewBackground">@android:color/white</color>
+    <color name="tabTextColor">#CDCDCD</color>
+
+    <color name="lightskyblue">#14a2d4</color>
+    <color name="lightgray">#11000000</color>
+    <color name="night_mask">#00000000</color>
+    <!--transparent-->
+    <color name="container_background">#EBEBEB</color>
+    <color name="item_background">#FAFAFA</color>
+
+    <color name="primary_text_white">#deffffff</color>
+    <!--87%white-->
+    <color name="primary_text">#de000000</color>
+    <!--87%black-->
+    <color name="secondary_text">#8a000000</color>
+    <!--54%black-->
+    <color name="tertiary_text">#8a000000</color>
+    <!--54%black-->
+    <color name="image_place_holder">#DFDFDF</color>
+    <color name="image_place_holder_night">#272B2F</color>
+    <!--87%white-->
+    <color name="progress_bar_unfinished">#D4D4D4</color>
+
+    <color name="alpha_05_white">#0DFFFFFF</color>
+    <color name="alpha_10_white">#1AFFFFFF</color>
+    <color name="alpha_15_white">#26FFFFFF</color>
+    <color name="alpha_20_white">#33FFFFFF</color>
+    <color name="alpha_25_white">#40FFFFFF</color>
+    <color name="alpha_30_white">#4DFFFFFF</color>
+    <color name="alpha_35_white">#59FFFFFF</color>
+    <color name="alpha_40_white">#66FFFFFF</color>
+    <color name="alpha_45_white">#73FFFFFF</color>
+    <color name="alpha_50_white">#80FFFFFF</color>
+    <color name="alpha_55_white">#8CFFFFFF</color>
+    <color name="alpha_60_white">#99FFFFFF</color>
+    <color name="alpha_65_white">#A6FFFFFF</color>
+    <color name="alpha_70_white">#B3FFFFFF</color>
+    <color name="alpha_75_white">#BFFFFFFF</color>
+    <color name="alpha_80_white">#CCFFFFFF</color>
+    <color name="alpha_85_white">#D9FFFFFF</color>
+    <color name="alpha_90_white">#E6FFFFFF</color>
+    <color name="alpha_95_white">#F2FFFFFF</color>
+
+    <color name="alpha_05_black">#0D000000</color>
+    <color name="alpha_10_black">#1A000000</color>
+    <color name="alpha_15_black">#26000000</color>
+    <color name="alpha_20_black">#33000000</color>
+    <color name="alpha_25_black">#40000000</color>
+    <color name="alpha_30_black">#4D000000</color>
+    <color name="alpha_35_black">#59000000</color>
+    <color name="alpha_40_black">#66000000</color>
+    <color name="alpha_45_black">#73000000</color>
+    <color name="alpha_50_black">#80000000</color>
+    <color name="alpha_55_black">#8C000000</color>
+    <color name="alpha_60_black">#99000000</color>
+    <color name="alpha_65_black">#A6000000</color>
+    <color name="alpha_70_black">#B3000000</color>
+    <color name="alpha_75_black">#BF000000</color>
+    <color name="alpha_80_black">#CC000000</color>
+    <color name="alpha_85_black">#D9000000</color>
+    <color name="alpha_90_black">#E6000000</color>
+    <color name="alpha_95_black">#F2000000</color>
+
+    <integer-array name="gplus_colors">
+        <item>@color/colorAccent</item>
+        <item>@color/gplus_color_2</item>
+        <item>@color/gplus_color_3</item>
+        <item>@color/gplus_color_4</item>
+    </integer-array>
+
+    <color name="base_bg">#ffeeeeee</color>
+    <color name="base_msg_color">#ff999999</color>
+    <color name="gplus_color_1">#3e802f</color>
+    <color name="gplus_color_2">#f4b400</color>
+    <color name="gplus_color_3">#427fed</color>
+    <color name="gplus_color_4">#b23424</color>
+    <!--<color name="photo_set_bg">#44000000</color>-->
+
+
+    <color name="diy_red">#DB3937</color>
+    <color name="diy_red2">#cc6f6e</color>
+    <color name="diy_gray">#C8C8CE</color>
+    <color name="diy_gray2">#999999</color>
+    <color name="diy_black">#4d4d4d</color>
+    <color name="diy_black2">#000000</color>
+    <color name="diy_white">#ffffff</color>
+    <color name="diy_white_bg">#F0F0F0</color>
+
+
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#ff676767</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
+    <color name="colorPrimaryDarkNight">#5acc95</color>
+
+    <!-- app palette -->
+    <color name="primary">#69F0AE</color>
+    <color name="accent">@color/primary</color> <!-- mono-color -->
+    <color name="primary_dark">#5acc95</color>
+    <color name="primary_super_dark">#11261c</color> <!-- same hue & sat, 15% brightness -->
+
+    <color name="nev_item">#ffffffff</color>
+
+    <!-- common colours -->
+    <color name="text_primary_dark">#de000000</color> <!-- 87% -->
+    <color name="text_secondary_dark">#8a000000</color> <!-- 54% -->
+    <color name="text_tertiary_dark">#61000000</color> <!-- 38% -->
+    <color name="text_primary_light">#ffffffff</color>
+    <color name="text_secondary_light">#b3ffffff</color> <!-- 70% -->
+    <color name="text_disabled_light">#4dffffff</color> <!-- 30% -->
+    <color name="ripple_light">#99ffffff</color>primary
+    <color name="ripple_dark">@color/mid_grey</color>
+    <color name="background_light">#fafafa</color> <!-- grey 50 -->
+    <color name="background_lightish">#e0e0e0</color> <!-- grey 300 -->
+    <color name="background_dark">#ff333333</color>
+    <color name="immersive_bars">#99000000</color>
+    <color name="light_immersive_bars">@color/immersive_bars</color>
+    <color name="status_bar_back">#ff676767</color> <!-- this is blended with immersive_bars to produce the desired status bar color i.e. background_super_dark -->
+    <color name="background_super_dark">#ff292929</color>
+    <color name="scrim">#99323232</color>
+    <color name="mid_grey">#40808080</color>
+    <color name="light_grey">#fff5f5f5</color>
+    <color name="grey_200">#ffeeeeee</color>
+    <color name="grey_300">#ffe0e0e0</color>
+
+    <color name="content_placeholder">#ffe0e0e0</color>
+    <color name="dark_icon">#99000000</color> <!-- 60% black-->
+    <color name="dark_icon_half_alpha">#4d000000</color> <!-- 30% black-->
+    <color name="dark_icon_on_primary">#ff2a6046</color> <!-- 60% black on @color/primary -->
+    <color name="inline_action_icon">#ff757575</color> <!-- grey 600 -->
+    <color name="light_icon">#ffffffff</color>
+    <color name="divider">#1f000000</color> <!-- 12% black -->
+    <color name="page_indicator_dark">#80333333</color>
+    <color name="page_indicator_dark_selected">#ff333333</color>
+    <color name="selected_comment_background">#ffffffff</color>
+    <color name="error">#ffdd2c00</color>
+
+    <!-- text (most text uses material theme colours) -->
+    <color name="hint_disabled_dark">#43000000</color> <!-- 26% black -->
+    <color name="text_on_accent">#8f000000</color>
+
+    <!-- designer news -->
+    <color name="designer_news">#03a9f4</color> <!--light blue 500 -->-->
+    <color name="designer_news_dark">#039be5</color> <!-- light blue 600 -->
+    <color name="designer_news_link_highlight">#b303a9f4</color>
+    <color name="designer_news_story_comment_background">@android:color/transparent</color>
+
+
+    <color name="designer_news_super_dark">#000133</color>
+    <color name="designer_news_quote_line">#ffeceef1</color>
+    <color name="designer_news_quote">#73000000</color>
+
+    <!-- dribbble -->
+    <color name="dribbble">#fff06292</color> <!-- pink 300 -->
+    <color name="dribbble_dark">#ec407a</color> <!-- pink 400 -->
+    <color name="dribbble_super_dark">#ff33292d</color>
+    <color name="dribbble_link_highlight">#b3f06292</color>
+    <color name="fab_heart_empty">@color/text_primary_light</color>
+    <color name="fab_heart_progress_bar">#deffffff</color> <!-- 87% white-->
+    <color name="fab_heart_full">#ffffffff</color>
+    <color name="gif_badge_light_image">#40000000</color>
+    <color name="gif_badge_dark_image">#b3ffffff</color>
+
+    <color name="text_color">#f6000000</color>
+    <color name="text_source">#732b2828</color>
+
+    <color name="meizibg">#faf1f1f1</color>
+    <color name="email">#ef6269</color> <!-- pink 300 -->
+
+
+</resources>
