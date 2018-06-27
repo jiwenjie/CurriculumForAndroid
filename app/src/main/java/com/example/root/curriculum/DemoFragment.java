@@ -10,7 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class DemoFragment extends Fragment {
+import com.example.root.curriculum.base.BaseFragment;
+import com.example.root.curriculum.base.IBasePresenter;
+import com.example.root.curriculum.base.IBaseView;
+
+import butterknife.BindView;
+
+public class DemoFragment extends BaseFragment<IBasePresenter> {
+
+    @BindView(R.id.tvInfo) TextView tv_info;
 
     public static DemoFragment newInstance(String info) {
         Bundle args = new Bundle();
@@ -20,18 +28,25 @@ public class DemoFragment extends Fragment {
         return fragment;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_demo, container, false);
-        TextView tvInfo = view.findViewById(R.id.tvInfo);
-        tvInfo.setText(getArguments().getString("info"));
-        tvInfo.setOnClickListener(new View.OnClickListener() {
+    protected int attachLayoutRes() {
+        return R.layout.fragment_demo;
+    }
+
+    @Override
+    protected void initViews() {
+
+        tv_info.setText(getArguments().getString("info"));
+        tv_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Snackbar.make(v, "hello", Snackbar.LENGTH_SHORT).show();
             }
         });
-        return view;
+    }
+
+    @Override
+    public void showNetError() {
+
     }
 }

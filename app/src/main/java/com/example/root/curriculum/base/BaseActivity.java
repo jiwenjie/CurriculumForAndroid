@@ -31,6 +31,7 @@ public abstract class BaseActivity<T extends IBasePresenter> extends AppCompatAc
 
     private ProgressDialog dialog;
     protected T mPresenter;
+    protected Toolbar toolbar;
 
     //用于整体管理 disable （RxJava）
     protected CompositeDisposable disposables = new CompositeDisposable();
@@ -57,6 +58,9 @@ public abstract class BaseActivity<T extends IBasePresenter> extends AppCompatAc
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(attachLayoutRes());
+        toolbar = findViewById(R.id.tb_toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.black));
+        initToolBar(toolbar, true, "首页");
         ButterKnife.bind(this);
         initViews();
     }
