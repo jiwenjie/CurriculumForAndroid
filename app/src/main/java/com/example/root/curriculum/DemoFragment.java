@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.multiple_status_view.MultipleStatusView;
 import com.example.root.curriculum.base.BaseFragment;
 import com.example.root.curriculum.base.IBasePresenter;
 import com.example.root.curriculum.base.IBaseView;
@@ -18,7 +19,10 @@ import butterknife.BindView;
 
 public class DemoFragment extends BaseFragment<IBasePresenter> {
 
-    @BindView(R.id.tvInfo) TextView tv_info;
+   // @BindView(R.id.tvInfo) TextView tv_info;
+
+    @BindView(R.id.multipleStatusView)
+    MultipleStatusView statusView;
 
     public static DemoFragment newInstance(String info) {
         Bundle args = new Bundle();
@@ -36,13 +40,14 @@ public class DemoFragment extends BaseFragment<IBasePresenter> {
     @Override
     protected void initViews() {
 
-        tv_info.setText(getArguments().getString("info"));
-        tv_info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar.make(v, "hello", Snackbar.LENGTH_SHORT).show();
-            }
-        });
+        statusView.showNoNetwork();
+//        tv_info.setText(getArguments().getString("info"));
+//        tv_info.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Snackbar.make(v, "hello", Snackbar.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     @Override

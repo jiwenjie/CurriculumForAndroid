@@ -71,11 +71,11 @@ dependencies {
 
     //okgo有关
     //必须使用
-    implementation 'com.lzy.net:okgo:3.0.4'
+//    implementation 'com.lzy.net:okgo:3.0.4'
     //以下三个选择添加，okrx和okrx2不能同时使用
 //    implementation 'com.lzy.net:okrx:1.0.2'
-    implementation 'com.lzy.net:okrx2:2.0.2'
-    implementation 'com.lzy.net:okserver:2.0.5'
+//    implementation 'com.lzy.net:okrx2:2.0.2'
+//    implementation 'com.lzy.net:okserver:2.0.5'
     //加入下面这两行代码
     implementation 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
@@ -85,5 +85,9 @@ dependencies {
     implementation 'com.lzy.widget:ninegridview:0.2.1'
     implementation 'com.lzy.widget:imagepicker:0.3.2'
     implementation 'com.lzy.widget:view-core:0.2.1'
+
+    implementation project(':multiple-status-view')
+    //模糊透明 View
+    implementation 'com.github.mmin18:realtimeblurview:1.1.0'
 
 }

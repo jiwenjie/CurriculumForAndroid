@@ -19,6 +19,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.example.multiple_status_view.MultipleStatusView;
 import com.example.root.curriculum.R;
 
 import java.io.Serializable;
@@ -32,6 +33,12 @@ public abstract class BaseActivity<T extends IBasePresenter> extends AppCompatAc
     private ProgressDialog dialog;
     protected T mPresenter;
     protected Toolbar toolbar;
+
+    private OnRetryListener listener = new OnRetryListener();
+    /**
+     * 多种状态的 View 的切换
+     */
+    protected MultipleStatusView mLayoutStatusView;
 
     //用于整体管理 disable （RxJava）
     protected CompositeDisposable disposables = new CompositeDisposable();
@@ -62,8 +69,22 @@ public abstract class BaseActivity<T extends IBasePresenter> extends AppCompatAc
         toolbar.setTitleTextColor(getResources().getColor(R.color.black));
         initToolBar(toolbar, true, "首页");
         ButterKnife.bind(this);
+        //多种状态切换的view 重试点击事件
+        mLayoutStatusView.setOnClickListener(listener);
         initViews();
     }
+
+    /**
+     * 点击重试监听器
+     */
+    public class OnRetryListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            onRetry();
+        }
+    }
+
+    abstract void onRetry();
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.example.multiple_status_view.MultipleStatusView;
 import com.example.root.curriculum.App;
 
 import butterknife.ButterKnife;
@@ -36,6 +37,12 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
     private boolean isPrepared;                 //标志位，View已经初始化完成。
     private boolean isFirstLoad = true;         //是否第一次加载
     protected LayoutInflater inflater;
+
+    private OnRetryListener listener = new OnRetryListener();
+    /**
+     * 多种状态的 View 的切换
+     */
+    protected MultipleStatusView mLayoutStatusView;
 
     //用于整体管理 disable （RxJava）
     protected CompositeDisposable disposables = new CompositeDisposable();
@@ -60,6 +67,8 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
         if (parent != null) {
             parent.removeView(mRootView);
         }
+        //多种状态切换的view 重试点击事件
+        mLayoutStatusView.setOnClickListener(listener);
         return mRootView;
     }
 
@@ -68,6 +77,18 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
         super.onDestroyView();
         disposables.clear();
     }
+
+    /**
+     * 点击重试监听器
+     */
+    public class OnRetryListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            onRetry();
+        }
+    }
+
+    abstract void onRetry();
 
     @Override
     public void dispose(Disposable disposable) {
