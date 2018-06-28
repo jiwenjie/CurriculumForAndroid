@@ -69,14 +69,14 @@ public abstract class BaseActivity<T extends IBasePresenter> extends AppCompatAc
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(attachLayoutRes());
-        toolbar = findViewById(R.id.tb_toolbar);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.black));
-        initToolBar(toolbar, true, "首页");
+//        toolbar = findViewById(R.id.tb_toolbar);
+//        toolbar.setTitleTextColor(getResources().getColor(R.color.black));
+        //initToolBar(toolbar, true, "首页");
         ButterKnife.bind(this);
         //多种状态切换的view 重试点击事件
-        //if (mLayoutStatusView != null) {
+        if (mLayoutStatusView != null) {
             mLayoutStatusView.setOnClickListener(listener);
-        //}
+        }
         initViews();
     }
 

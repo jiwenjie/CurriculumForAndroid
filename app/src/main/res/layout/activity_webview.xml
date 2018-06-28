@@ -6,42 +6,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBar"
-        app:theme="@style/AppTheme.AppBarOverlay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:background="@color/black"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
+            android:layout_height="wrap_content">
 
             <com.example.root.curriculum.util.IconFontTextView
                 android:id="@+id/tv_return"
                 android:text="@string/ic_return"
-                android:layout_gravity="left"
-                android:layout_marginRight="15dp"
-                android:textColor="@color/white"
-                android:textSize="25dp"
+                android:textSize="30dp"
+                android:gravity="left"
+                android:alpha="0.8"
+                android:textColor="@color/alpha_80_white"
+                android:layout_marginLeft="12dp"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/web_title"
+                android:text="WebView部分"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_width="70dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:maxLines="1"
                 android:layout_height="wrap_content" />
 
             <com.example.root.curriculum.util.IconFontTextView
                 android:id="@+id/tv_share"
                 android:text="@string/ic_share"
                 android:layout_gravity="right"
-                android:layout_marginRight="15dp"
                 android:textColor="@color/white"
+                android:layout_marginRight="15dp"
+                android:alpha="0.8"
                 android:textSize="25dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
         </android.support.v7.widget.Toolbar>
-
-    </android.support.design.widget.AppBarLayout>
 
     <ProgressBar
         android:id="@+id/pb"
@@ -52,9 +56,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <WebView
-        android:id="@+id/webView"
+    <com.example.multiple_status_view.MultipleStatusView
+        android:id="@+id/web_multipleStatusView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:emptyView="@layout/layout_empty_view"
+        app:errorView="@layout/layout_error_view"
+        app:loadingView="@layout/layout_loading_view"
+        app:noNetworkView="@layout/layout_network_view">
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.example.multiple_status_view.MultipleStatusView>
 
 </LinearLayout>

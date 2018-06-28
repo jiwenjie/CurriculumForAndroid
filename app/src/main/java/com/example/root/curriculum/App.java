@@ -5,12 +5,14 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 
+import org.litepal.LitePalApplication;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-public class App extends Application {
+public class App extends LitePalApplication {
 
     private static List<AppCompatActivity> activities = new LinkedList<>();
 

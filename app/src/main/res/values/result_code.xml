@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="login_ok">1</integer>
+    <integer name="login_failed">2</integer>
+    <integer name="register_ok">3</integer>
+    <integer name="http_response_ok">200</integer>
+    <integer name="http_get_json_success">1</integer>
+    <integer name="add_calendar_ok">0</integer>
+</resources>

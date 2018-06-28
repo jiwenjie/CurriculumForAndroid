@@ -17,13 +17,8 @@
     <string name="ic_user">&#xe652; </string> <!--用户-->
     <string name="ic_more">&#xe62b; </string> <!--更多-->
 
-
     <string name="search">搜索</string>
     <string name="search_result">SearchResult</string>
-
-    <string name="hint_search">please input the search content&#8230;</string>
-
-    <string name="snow">北国风光，\n千里冰封，\n万里雪飘。\n望长城内外，\n惟余莽莽；\n大河上下，\n顿失滔滔。\n山舞银蛇，\n原驰蜡象，\n欲与天公试比高。(原驰 原作：原驱)\n须晴日，\n看红装素裹，\n分外妖娆。(红装 一作：银装)\n江山如此多娇，\n引无数英雄竞折腰。\n惜秦皇汉武，\n略输文采；\n唐宗宋祖，\n稍逊风骚。\n一代天骄，\n成吉思汗，\n只识弯弓射大雕。\n俱往矣，\n数风流人物，\n还看今朝。</string>
 
     <!--有关系统权限-->
     <string name="notifyTitle">提示</string>
@@ -31,21 +26,29 @@
     <string name="setting">设置</string>
     <string name="cancel">取消</string>
 
+    <!--有关用户登陆部分的String-->
+    <string name="menu_user">登录</string>
+    <string name="menu_logout">注销</string>
+    <string name="message_login_success">登录成功</string>
+    <string name="message_login_fail">登录失败</string>
+    <string name="message_register_success">注册成功</string>
+    <string name="message_register_failed">注册失败</string>
+    <string name="message_add_calendar_ok">添加成功</string>
+
+    <string name="text_calendar_title">标题</string>
+    <string name="text_OK">确定</string>
+    <string name="config_file_path">config</string>
+    <string name="text_username">用户名</string>
+    <string name="text_password">密码</string>
+    <string name="text_confirm">确认密码</string>
+    <string name="text_register">注册</string>
+    <string name="text_password_confirm_failed">密码不一致</string>
+    <string name="text_password_empty">密码为空</string>
+    <string name="server_url">http://192.168.1.111:3000/json</string>
 
     <string name="video_offline">缓存</string>
     <string name="video_attention">+ 关注</string>
     <string name="video_end"> - The End-</string>
-
-    <string name="category_title">全部分类</string>
-    <string name="hot_title">人气榜</string>
-    <string name="about">关于</string>
-
-    <string name="search_transition_name">transition_reveal</string>
-    <string name="search_hint_text">帮你找到感兴趣的视频</string>
-    <string name="search_title_tip">输入标题或描述中的关键词找到更多视频</string>
-    <string name="search_hot_keywords_tip">- 热门搜索词 -</string>
-    <string name="search_result_count">-「%1$s」搜索结果共%2$d个-</string>
-
 
     <string name="nickname">Jiwenjie</string>
     <string name="view_homepage">查看个人主页 ></string>
@@ -58,12 +61,10 @@
     <string name="view_history">阅读记录</string>
     <string name="feedback">意见反馈</string>
 
-
     <string name="loading_text">加载中&#8230;</string>
     <string name="no_network">请检查网络后点击重新加载</string>
     <string name="data_error">数据获取失败(ㄒoㄒ)~~</string>
     <string name="empty_view_hint">暂时木有内容呀~~</string>
-
 
     <string name="not_use_commercial">本APP只供学习交流和研究之用，\n请勿用作商业用途！</string>
     <string name="since">copyright ©2018 Jack.</string>

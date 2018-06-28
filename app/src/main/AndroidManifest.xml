@@ -48,6 +48,14 @@
         <activity android:name=".activity.WebViewActivity"
             android:screenOrientation="portrait" />
 
+        <!--登陆的活动-->
+        <activity android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait" />
+
+        <!--注册-->
+        <activity android:name=".activity.RegisterActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

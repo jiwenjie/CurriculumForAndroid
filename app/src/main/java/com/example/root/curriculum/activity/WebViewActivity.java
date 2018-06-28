@@ -18,13 +18,16 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.example.multiple_status_view.MultipleStatusView;
 import com.example.root.curriculum.R;
 import com.example.root.curriculum.base.BaseActivity;
 import com.example.root.curriculum.base.IBasePresenter;
 import com.example.root.curriculum.util.IconFontTextView;
 import com.example.root.curriculum.util.NetWorkUtil;
 import com.example.root.curriculum.util.ToastUtil;
+import com.example.root.curriculum.util.Utils;
 
 import butterknife.BindView;
 
@@ -38,11 +41,14 @@ public class WebViewActivity extends BaseActivity<IBasePresenter> {
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.tv_share) IconFontTextView tv_share;
     @BindView(R.id.tv_return) IconFontTextView tv_return;
+    @BindView(R.id.web_title) TextView tv_title;
+    @BindView(R.id.web_multipleStatusView) MultipleStatusView web_multile;
 
     private Dialog mWebViewDialog;
     private CardView share_friend;
     private CardView copy_link;
     private CardView btn_cancel;
+    private String url;
 
     public static void runActivity(Context context, String title, String url) {
         Intent intent = new Intent(context, WebViewActivity.class);
@@ -58,28 +64,16 @@ public class WebViewActivity extends BaseActivity<IBasePresenter> {
 
     @Override
     protected void initViews() {
-        final String url = getIntent().getStringExtra(URL);
+
+        web_multile = mLayoutStatusView;
+        web_multile.showContent();
+        url = getIntent().getStringExtra(URL);
         String title = getIntent().getStringExtra(TITLE);
-        initToolBar(toolbar, true, title);
         mWebViewDialog = new Dialog(this, R.style.BottomDialog);
-
-        tv_share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        setDialog();
-                    }
-                });
-
-            }
-        });
-
         pb.setMax(100);
-
+        //设置标题
+        tv_title.setText(title);
         webSetting();
-
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
@@ -88,9 +82,32 @@ public class WebViewActivity extends BaseActivity<IBasePresenter> {
             }
         });
 
-        webView.loadUrl(url);
+        doOthers();
     }
 
+
+    private void doOthers() {
+        //正式加载
+        webView.loadUrl(url);
+
+        tv_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setDialog();
+            }
+        });
+
+        if (!NetWorkUtil.isWifiConnected(this) && !NetWorkUtil.isNetWorkConnected(this)) {
+            web_multile.showNoNetwork();
+        }
+
+        tv_return.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();  //直接退出结束当前活动界面
+            }
+        });
+    }
 
     //底部菜单栏，弹出一个选择，提供是选择对于网页的操作
     private void setDialog() {
@@ -110,7 +127,7 @@ public class WebViewActivity extends BaseActivity<IBasePresenter> {
         WindowManager.LayoutParams lp = dialogWindow.getAttributes(); // 获取对话框当前的参数值
         lp.x = 0; // 新位置X坐标
         lp.y = 0; // 新位置Y坐标
-        lp.width = (int) getResources().getDisplayMetrics().widthPixels; // 宽度
+        lp.width = getResources().getDisplayMetrics().widthPixels; // 宽度
         root.measure(0, 0);
         lp.height = root.getMeasuredHeight();
 
@@ -125,8 +142,9 @@ public class WebViewActivity extends BaseActivity<IBasePresenter> {
         copy_link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ToastUtil.showToast("你点击了复制链接");
+                Utils.copy(getBaseContext(), url);
                 mWebViewDialog.dismiss();
+                ToastUtil.showToast("链接复制成功");
             }
         });
 
@@ -188,11 +206,11 @@ public class WebViewActivity extends BaseActivity<IBasePresenter> {
                 }
             }
         });
-
     }
 
     @Override
     protected void onRetry() {
-
+        ToastUtil.showToast("点击重试");
+        doOthers();
     }
 }

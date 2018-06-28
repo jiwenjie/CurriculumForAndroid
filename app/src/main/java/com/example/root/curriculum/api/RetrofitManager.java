@@ -17,6 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitManager {
 
     private static ApiService apiService;
+    private static GankApi gankApi;
     private static OkHttpClient okHttpClient;
     private static Converter.Factory gsonConverterFactory = GsonConverterFactory.create();
     private static CallAdapter.Factory rxJavaCallAdapterFactory = RxJava2CallAdapterFactory.create();
@@ -47,9 +48,26 @@ public class RetrofitManager {
                     .addConverterFactory(gsonConverterFactory)
                     .addCallAdapterFactory(rxJavaCallAdapterFactory)
                     .build();
+
             apiService = retrofit.create(ApiService.class);
         }
         return apiService;
+    }
+
+    public static GankApi getGankApi() {
+
+        if (gankApi == null) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .client(getClient())
+                    .baseUrl("http://gank.io/api/")
+                    .addCallAdapterFactory(rxJavaCallAdapterFactory)
+                    .addConverterFactory(gsonConverterFactory)
+                    .build();
+
+            gankApi = retrofit.create(GankApi.class);
+        }
+
+        return gankApi;
     }
 
 }
