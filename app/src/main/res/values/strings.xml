@@ -1,6 +1,22 @@
 <resources>
     <string name="app_name">Curriculum</string>
 
+    <!--iconfont字体图标-->
+    <string name="tab_left">&#xe620; </string> <!--左对齐-->
+    <string name="tab_right">&#xe618; </string> <!--右对齐-->
+    <string name="ic_hot">&#xe66d; </string> <!--火-->
+    <string name="ic_return">&#xe6e5; </string> <!--返回-->
+    <string name="ic_share">&#xe66c; </string> <!--分享-->
+    <string name="ic_search">&#xe6a8; </string> <!--搜索-->
+    <string name="ic_collect_nor">&#xe63c; </string> <!--未收藏-->
+    <string name="ic_collect_sel">&#xe63b; </string> <!--已收藏-->
+    <string name="ic_about">&#xe7ca; </string> <!--关于-->
+    <string name="ic_close">&#xe80b; </string> <!--关闭的叉-->
+    <string name="ic_home">&#xe611; </string> <!--首页-->
+    <string name="ic_type">&#xe654; </string> <!--分类-->
+    <string name="ic_user">&#xe652; </string> <!--用户-->
+    <string name="ic_more">&#xe62b; </string> <!--更多-->
+
 
     <string name="search">搜索</string>
     <string name="search_result">SearchResult</string>
@@ -39,19 +55,16 @@
     <string name="mine_message">我的消息</string>
     <string name="mine_attention">我的关注</string>
     <string name="mine_cache">我的缓存</string>
-    <string name="view_history">观看记录</string>
+    <string name="view_history">阅读记录</string>
     <string name="feedback">意见反馈</string>
-
 
 
     <string name="loading_text">加载中&#8230;</string>
     <string name="no_network">请检查网络后点击重新加载</string>
     <string name="data_error">数据获取失败(ㄒoㄒ)~~</string>
     <string name="empty_view_hint">暂时木有内容呀~~</string>
-    <string name="splash_text">每日精选视频，让你大开眼界</string>
 
 
-    <string name="copy_right_notice">内容部分数据归原公司《开眼Eyepetizer》版权所有</string>
     <string name="not_use_commercial">本APP只供学习交流和研究之用，\n请勿用作商业用途！</string>
     <string name="since">copyright ©2018 Jack.</string>
     <string name="gitHub">GitHub</string>

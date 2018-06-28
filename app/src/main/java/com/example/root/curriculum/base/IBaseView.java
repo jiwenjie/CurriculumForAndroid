@@ -15,14 +15,5 @@ public interface IBaseView {
      */
     void hideLoading();
 
-    /**
-     * 显示网络错误
-     */
-    void showNetError();
-
-    /**
-     * 完成刷新, 新增控制刷新
-     */
-//    void finishRefresh();
 
 }

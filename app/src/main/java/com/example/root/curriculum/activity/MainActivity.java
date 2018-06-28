@@ -1,15 +1,18 @@
-package com.example.root.curriculum;
+package com.example.root.curriculum.activity;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.root.curriculum.R;
+import com.example.root.curriculum.adapter.ViewPagerAdapter;
 import com.example.root.curriculum.base.BaseActivity;
 import com.example.root.curriculum.base.IBasePresenter;
+import com.example.root.curriculum.fragment.HomeFragment;
+import com.example.root.curriculum.fragment.MineFragment;
+import com.example.root.curriculum.fragment.SearchFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +26,9 @@ public class MainActivity extends BaseActivity<IBasePresenter> {
 
     private void setupViewPager(ViewPager viewPager) {
 
-        list_fragment.add(DemoFragment.newInstance("首页"));
-        list_fragment.add(DemoFragment.newInstance("信息"));
-        list_fragment.add(DemoFragment.newInstance("我的"));
+        list_fragment.add(HomeFragment.newInstance("首页"));
+        list_fragment.add(SearchFragment.newInstance("信息"));
+        list_fragment.add(MineFragment.newInstance("我的"));
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), list_fragment);
 
         viewPager.setAdapter(adapter);
@@ -43,7 +46,7 @@ public class MainActivity extends BaseActivity<IBasePresenter> {
         //initSystemBarTint();
 
         viewPager = findViewById(R.id.vp);
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bnv_menu);
+        bottomNavigationView = findViewById(R.id.bnv_menu);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -90,7 +93,7 @@ public class MainActivity extends BaseActivity<IBasePresenter> {
     }
 
     @Override
-    public void showNetError() {
+    protected void onRetry() {
 
     }
 

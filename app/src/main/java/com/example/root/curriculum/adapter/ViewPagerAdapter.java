@@ -1,4 +1,4 @@
-package com.example.root.curriculum;
+package com.example.root.curriculum.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,7 +10,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     private List<Fragment> list_fragment;
     private List<String> list_title;
-//    private BottomNavigationView view;
 
     public ViewPagerAdapter(FragmentManager fm, List<Fragment> list) {
         super(fm);

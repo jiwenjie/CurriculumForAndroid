@@ -20,6 +20,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.example.multiple_status_view.MultipleStatusView;
+import com.example.root.curriculum.App;
 import com.example.root.curriculum.R;
 
 import java.io.Serializable;
@@ -28,20 +29,20 @@ import butterknife.ButterKnife;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
-public abstract class BaseActivity<T extends IBasePresenter> extends AppCompatActivity implements IBaseView, RxNetManager {
+public abstract class BaseActivity<T extends IBasePresenter> extends AppCompatActivity implements IBaseView {
 
     private ProgressDialog dialog;
     protected T mPresenter;
     protected Toolbar toolbar;
 
-    private OnRetryListener listener = new OnRetryListener();
     /**
      * 多种状态的 View 的切换
      */
-    protected MultipleStatusView mLayoutStatusView;
+    protected MultipleStatusView mLayoutStatusView = new MultipleStatusView(App.getInstance());
 
     //用于整体管理 disable （RxJava）
-    protected CompositeDisposable disposables = new CompositeDisposable();
+    //protected CompositeDisposable disposables = new CompositeDisposable();
+    protected Disposable disposable;
 
     /**
      * 绑定布局文件
@@ -61,6 +62,9 @@ public abstract class BaseActivity<T extends IBasePresenter> extends AppCompatAc
         return true;
     }
 
+    // 点击重试方法
+    protected abstract void onRetry();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,21 +74,21 @@ public abstract class BaseActivity<T extends IBasePresenter> extends AppCompatAc
         initToolBar(toolbar, true, "首页");
         ButterKnife.bind(this);
         //多种状态切换的view 重试点击事件
-        mLayoutStatusView.setOnClickListener(listener);
+        //if (mLayoutStatusView != null) {
+            mLayoutStatusView.setOnClickListener(listener);
+        //}
         initViews();
     }
 
     /**
      * 点击重试监听器
      */
-    public class OnRetryListener implements View.OnClickListener {
+    private View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             onRetry();
         }
-    }
-
-    abstract void onRetry();
+    };
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -131,22 +135,18 @@ public abstract class BaseActivity<T extends IBasePresenter> extends AppCompatAc
         imm.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
     }
 
-
-    @Override
-    public void dispose(Disposable disposable) {
-        disposables.remove(disposable);
-    }
-
-    @Override
-    public void addDisposable(Disposable disposable) {
-        disposables.add(disposable);
-    }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
-        disposables.clear();
+        unsubscribe();
     }
+
+    protected void unsubscribe() {
+        if (disposable != null && !disposable.isDisposed()) {
+            disposable.dispose();
+        }
+    }
+
 
     protected void openActivity(Class<?> cls) {
         openActivity(this, cls);

@@ -16,14 +16,26 @@ public class App extends Application {
 
     public static List<?> images = new ArrayList<>();
     public static List<?> titles = new ArrayList<>();
+    private static App cloudReaderApplication;
     public static int H,W;
 
-    private static Context context;
+    //单例 App
+    public static App getInstance() {
+        // if语句下是不会走的，Application本身已单例
+        if (cloudReaderApplication == null) {
+            synchronized (App.class) {
+                if (cloudReaderApplication == null) {
+                    cloudReaderApplication = new App();
+                }
+            }
+        }
+        return cloudReaderApplication;
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        context = this.getApplicationContext();
+        cloudReaderApplication = this;
 
         String[] urls = getResources().getStringArray(R.array.url);
         String[] tips = getResources().getStringArray(R.array.title);
@@ -31,10 +43,8 @@ public class App extends Application {
         images = new ArrayList<>(list);
         List list1 = Arrays.asList(tips);
         titles = new ArrayList<>(list1);
-        getScreen(context);
+        getScreen(cloudReaderApplication);
 
-        //初始化 okgo 的方法
-        //initOkGo();
     }
 
     public void getScreen(Context aty) {
@@ -42,10 +52,6 @@ public class App extends Application {
         DisplayMetrics dm = aty.getResources().getDisplayMetrics();
         H = dm.heightPixels;
         W = dm.widthPixels;
-    }
-
-    public static Context getContext() {
-        return context;
     }
 
     /**

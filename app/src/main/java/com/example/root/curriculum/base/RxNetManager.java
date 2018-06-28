@@ -7,4 +7,5 @@ interface RxNetManager {
     void dispose(Disposable disposable);
 
     void addDisposable(Disposable disposable);
+
 }

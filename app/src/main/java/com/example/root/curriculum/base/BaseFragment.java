@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
-public abstract class BaseFragment<T extends IBasePresenter> extends Fragment implements IBaseView, RxNetManager {
+public abstract class BaseFragment<T extends IBasePresenter> extends Fragment implements IBaseView {
 
     protected T mPresenter;
 
@@ -38,14 +38,14 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
     private boolean isFirstLoad = true;         //是否第一次加载
     protected LayoutInflater inflater;
 
-    private OnRetryListener listener = new OnRetryListener();
     /**
      * 多种状态的 View 的切换
      */
-    protected MultipleStatusView mLayoutStatusView;
+    protected MultipleStatusView mLayoutStatusView = new MultipleStatusView(App.getInstance());
 
     //用于整体管理 disable （RxJava）
-    protected CompositeDisposable disposables = new CompositeDisposable();
+    //protected CompositeDisposable disposables = new CompositeDisposable();
+    protected Disposable disposable;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,48 +63,48 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
             ButterKnife.bind(this, mRootView);
             initViews();
         }
+
         ViewGroup parent = (ViewGroup) mRootView.getParent();
         if (parent != null) {
             parent.removeView(mRootView);
         }
         //多种状态切换的view 重试点击事件
-        mLayoutStatusView.setOnClickListener(listener);
+        if (mLayoutStatusView != null) {
+            mLayoutStatusView.setOnClickListener(listener);
+        }
         return mRootView;
     }
 
+    //确保在退出的时候销毁， 防止内存泄漏
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        disposables.clear();
+        unsubscribe();
+    }
+
+    protected void unsubscribe() {
+        if (disposable != null && !disposable.isDisposed()) {
+            disposable.dispose();
+        }
     }
 
     /**
      * 点击重试监听器
      */
-    public class OnRetryListener implements View.OnClickListener {
+    private View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             onRetry();
         }
-    }
+    };
 
-    abstract void onRetry();
-
-    @Override
-    public void dispose(Disposable disposable) {
-        disposables.remove(disposable);
-    }
-
-    @Override
-    public void addDisposable(Disposable disposable) {
-        disposables.add(disposable);
-    }
+    protected abstract void onRetry();
 
     @Override
     public void showLoading() {
 
         if (dialog != null && dialog.isShowing()) {
-            dialog = new ProgressDialog(App.getContext());
+            dialog = new ProgressDialog(App.getInstance());
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setCanceledOnTouchOutside(false);
             dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);

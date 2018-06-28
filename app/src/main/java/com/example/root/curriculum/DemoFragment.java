@@ -16,6 +16,7 @@ import com.example.root.curriculum.base.IBasePresenter;
 import com.example.root.curriculum.base.IBaseView;
 
 import butterknife.BindView;
+import io.reactivex.disposables.Disposable;
 
 public class DemoFragment extends BaseFragment<IBasePresenter> {
 
@@ -41,17 +42,11 @@ public class DemoFragment extends BaseFragment<IBasePresenter> {
     protected void initViews() {
 
         statusView.showNoNetwork();
-//        tv_info.setText(getArguments().getString("info"));
-//        tv_info.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Snackbar.make(v, "hello", Snackbar.LENGTH_SHORT).show();
-//            }
-//        });
+
     }
 
     @Override
-    public void showNetError() {
+    protected void onRetry() {
 
     }
 }
