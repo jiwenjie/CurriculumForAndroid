@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 
-public class JsonHandler extends Handler implements Serializable {
+public class JsonHandler extends Handler {
 
     private MineFragment mineFragment;
 

@@ -14,7 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class JsonThread implements Runnable, Serializable {
+public class JsonThread implements Runnable {
 
     private ArrayList<String> urlList;
     private Handler handler;
