@@ -141,7 +141,7 @@
                     android:layout_height="36dp"
                     android:layout_marginLeft="6dp"
                     android:background="@null"
-                    android:hint="密码"
+                    android:hint="确认密码"
                     android:textStyle="bold"
                     android:textColor="@color/alpha_90_white"
                     android:inputType="textPassword"

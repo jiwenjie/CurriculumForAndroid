@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -67,6 +68,7 @@ public class MineFragment extends BaseFragment<IBasePresenter> {
      */
     private void initUserPart() {
         Resources resources = getResources();
+
         jsonHandler = new JsonHandler(this);
         jsonThread = new JsonThread(resources, jsonHandler);
         Thread thread = new Thread(jsonThread);
@@ -80,27 +82,22 @@ public class MineFragment extends BaseFragment<IBasePresenter> {
         tv_nickName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!Constants.IS_LOGIN) {
+//                if (!Constants.IS_LOGIN) {
                     //没有登陆
                     Intent intent = new Intent(getContext(), LoginActivity.class);
-//                    Bundle bundle = new Bundle();
-//                    bundle.putSerializable("user_mine", users);
-//                    intent.putExtras(bundle);
-                    //startActivity(intent);
                     startActivityForResult(intent, 1);
-                } else {
-                    ToastUtil.showToast("您已登陆");
-                }
+//                } else {
+//                    ToastUtil.showToast("您已登陆");
+//                }
             }
         });
 
     }
 
     public void onLoginSuccess() {
-        MenuItem item = menu.findItem(R.id.user_item);
         SharedPreferences share = getActivity().getSharedPreferences(getResources().getString(R.string.config_file_path), MODE_PRIVATE);
         String username = share.getString("username", "");
-        item.setTitle(getResources().getString(R.string.menu_logout) + " " + username);
+        tv_nickName.setText(username);
         ToastUtil.showToast(getString(R.string.message_login_success));
     }
 
@@ -116,14 +113,17 @@ public class MineFragment extends BaseFragment<IBasePresenter> {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        ToastUtil.showToast("进入onActivityResult");
+        Log.d("MineFragment", "进入onActivity=======================================================");
         if (data == null) {
             return;
         }
         if (resultCode == 1) {
+            Log.d("MineFragment", "进入onActivity     1111111111111=======================================================");
             users.login(data.getStringExtra("username"), data.getStringExtra("password"));
-            tv_nickName.setText(data.getStringExtra("username"));
         }
         else if (resultCode == 3) {
+            Log.d("MineFragment", "进入onActivity   33333333333=======================================================");
             users.register(data.getStringExtra("username"), data.getStringExtra("password"));
         }
     }

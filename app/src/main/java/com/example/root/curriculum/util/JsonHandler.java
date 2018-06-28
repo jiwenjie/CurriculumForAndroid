@@ -22,9 +22,11 @@ public class JsonHandler extends Handler {
 
     @Override
     public void handleMessage(Message msg) {
+
         super.handleMessage(msg);
         switch (msg.what){
-            case R.integer.http_get_json_success:
+            case 1:
+                ToastUtil.showToast("JsonHandle Success");
                 JSONObject obj = (JSONObject) msg.obj;
                 handleJson(obj);
                 break;

@@ -77,12 +77,12 @@ public class LoginActivity extends BaseActivity<IBasePresenter> {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtil.showToast("注册部分");
+               // ToastUtil.showToast("注册部分");
                 userName = et_userName.getText().toString();
                 userPass = et_password.getText().toString();
                 String confirm = et_confirm.getText().toString();
 
-                if (!TextUtils.isEmpty(userName) || !TextUtils.isEmpty(userPass) || !TextUtils.isEmpty(confirm)) {
+                if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(userPass) || TextUtils.isEmpty(confirm)) {
                     ToastUtil.showToast("输入不合法，请重新输入");
                 } else {
                     if (userPass.equals(confirm)) {
@@ -94,9 +94,10 @@ public class LoginActivity extends BaseActivity<IBasePresenter> {
                         intent.putExtras(bun);
                         //Constants.IS_LOGIN = true;  //把登陆状态设置为 true
                         intent.putExtras(bun);
+                        ToastUtil.showToast("注册成功");
                         LoginActivity.this.setResult(3, intent);
                         LoginActivity.this.finish();
-                        return;
+                        //return;
                     }
                 }
             }

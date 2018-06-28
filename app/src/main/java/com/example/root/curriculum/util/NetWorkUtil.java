@@ -45,7 +45,7 @@ public class NetWorkUtil {
 
         return false;
     }
-    
+
     /**
      * 获取当前手机网络的IPV4的地址
      * @param context

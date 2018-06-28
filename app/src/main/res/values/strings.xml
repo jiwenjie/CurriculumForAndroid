@@ -44,7 +44,7 @@
     <string name="text_register">注册</string>
     <string name="text_password_confirm_failed">密码不一致</string>
     <string name="text_password_empty">密码为空</string>
-    <string name="server_url">http://192.168.1.111:3000/json</string>
+    <string name="server_url">http://192.168.1.102:3000/json</string>
 
     <string name="video_offline">缓存</string>
     <string name="video_attention">+ 关注</string>

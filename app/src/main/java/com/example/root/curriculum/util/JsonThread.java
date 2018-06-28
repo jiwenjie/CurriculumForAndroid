@@ -34,6 +34,7 @@ public class JsonThread implements Runnable {
 
     @Override
     public void run() {
+        //ToastUtil.showToast("进入线程的死循环");
         while (true) {
             Log.v("info", "url list size is " + urlList.size());
             if (urlList.size() == 0) {
@@ -63,6 +64,7 @@ public class JsonThread implements Runnable {
                     reader.close();
                     conn.disconnect();
                     JSONObject obj = new JSONObject(strBuilder.toString());
+                    Log.v("info", "=====================================信息发送成功===================================");
                     Message msg = new Message();
                     msg.obj = obj;
                     msg.what = 1;
