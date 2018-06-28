@@ -36,13 +36,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".activity.MainActivity">
+        <!--App启动界面-->
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--主活动部分-->
+        <activity android:name=".activity.MainActivity"
+            android:screenOrientation="portrait" />
 
         <!--有关打开网页的activity-->
         <activity android:name=".activity.WebViewActivity"

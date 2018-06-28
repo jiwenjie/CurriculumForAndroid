@@ -41,4 +41,11 @@
 
     <dimen name="division_line">0.5dp</dimen>
 
+    <!--splash 使用-->
+    <dimen name="splash_bottom_padding">10dp</dimen>
+    <dimen name="splash_middle_top_margin">10dp</dimen>
+    <dimen name="splash_bottom_margin">40dp</dimen>
+    <dimen name="splash_top_margin">180dp</dimen>
+    <dimen name="small">14dp</dimen>
+
 </resources>
