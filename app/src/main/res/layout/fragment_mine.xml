@@ -158,20 +158,13 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tv_watch_history"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="center|center_horizontal"
-                android:text="@string/view_history"
-                android:textSize="14sp" />
-
-            <TextView
                 android:id="@+id/tv_feedback"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center|center_horizontal"
-                android:text="@string/feedback"
+                android:text="@string/about_my_team"
                 android:textSize="14sp" />
+
         </LinearLayout>
 
 

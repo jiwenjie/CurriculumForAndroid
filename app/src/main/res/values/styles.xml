@@ -30,6 +30,8 @@
     <style name="FitSystemWindows">
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:clipToPadding">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
 
     <!--用在底部菜单栏的style-->

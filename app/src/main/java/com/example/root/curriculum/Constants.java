@@ -10,6 +10,8 @@ public class Constants {
 
     public static final String EX_URL_TEO = "http://gank.io/api/data/福利/10/1";
 
+    public static final String GIT_ADDRESS = "https://github.com/jiwenjie/CurriculumForAndroid";
+
     public static boolean IS_LOGIN = false;     //默认为未登录状态
 
 }

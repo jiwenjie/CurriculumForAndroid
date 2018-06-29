@@ -14,9 +14,11 @@ import android.widget.TextView;
 import com.example.root.curriculum.App;
 import com.example.root.curriculum.Constants;
 import com.example.root.curriculum.R;
+import com.example.root.curriculum.activity.AboutMyTeamActivity;
 import com.example.root.curriculum.activity.CollectionActivity;
 import com.example.root.curriculum.activity.GetFriendsActivity;
 import com.example.root.curriculum.activity.LoginActivity;
+import com.example.root.curriculum.activity.WebViewActivity;
 import com.example.root.curriculum.base.BaseFragment;
 import com.example.root.curriculum.base.IBasePresenter;
 import com.example.root.curriculum.bean.Users;
@@ -33,20 +35,18 @@ public class MineFragment extends BaseFragment<IBasePresenter> {
 
     @BindView(R.id.iv_avatar) CircleImageView iv_avatar;
     @BindView(R.id.tv_nickname) TextView tv_nickName;   //用户名
-    @BindView(R.id.tv_view_homepage) TextView tv_view_homepage;
+    @BindView(R.id.tv_view_homepage) TextView tv_view_homepage; //项目主页
     @BindView(R.id.tv_collection) TextView tv_collection;
     @BindView(R.id.tv_comment) TextView tv_comment;
     @BindView(R.id.tv_mine_message) TextView tv_mine_message;   //我的消息，查看联系人
     @BindView(R.id.tv_mine_attention) TextView tv_mine_attention;
     @BindView(R.id.tv_mine_cache) TextView tv_mine_cache;
-    @BindView(R.id.tv_watch_history) TextView tv_watch_history;
-    @BindView(R.id.tv_feedback) TextView tv_feedback;
+    @BindView(R.id.tv_feedback) TextView tv_aboutMy;        //关于我们的部分
 
     //用户登陆部分相关
     private Users users;
     private JsonHandler jsonHandler;
     private JsonThread jsonThread;
-    private Menu menu;
 
     public static MineFragment newInstance(String info) {
         Bundle args = new Bundle();
@@ -83,6 +83,24 @@ public class MineFragment extends BaseFragment<IBasePresenter> {
             public void onClick(View v) {
                 Intent intent = new Intent(App.getInstance(), GetFriendsActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        //关于我们的跳转
+        tv_aboutMy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(App.getInstance(), AboutMyTeamActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //查看项目主页
+        tv_view_homepage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //点击跳转项目主页
+                WebViewActivity.runActivity(App.getInstance(), "项目主页" , Constants.GIT_ADDRESS);
             }
         });
     }

@@ -51,7 +51,7 @@
     <string name="video_end"> - The End-</string>
 
     <string name="nickname">Jiwenjie</string>
-    <string name="view_homepage">查看个人主页 ></string>
+    <string name="view_homepage">查看项目主页 ></string>
 
     <string name="collection">收藏</string>
     <string name="comment">评论</string>
@@ -59,7 +59,7 @@
     <string name="mine_attention">我的关注</string>
     <string name="mine_cache">我的缓存</string>
     <string name="view_history">阅读记录</string>
-    <string name="feedback">意见反馈</string>
+    <string name="about_my_team">关于我们</string>
 
     <string name="loading_text">加载中&#8230;</string>
     <string name="no_network">请检查网络后点击重新加载</string>
@@ -72,5 +72,17 @@
 
     <string name="splash_slogan">Go through the every bit of life</string>
     <string name="splash_version">V 1.0.0</string>
+    
+    <string name="team02">我叫齐亚欣，是合师2015级软件2班的学习委员，性格活泼开朗。热爱学习，
+        平时和同学友好相处，多次参加各种活动，获得过三好学生等奖状。是我们第十小组的重要贡献者。</string>
+
+    <string name="team01">我叫陈柳扬，预备党员，家住扬州，合肥师范学院2015级软件工程2班学生；
+        待人和善。平时和同学老师和睦相处，热爱学习，多次获得过校级奖学金，优良学风个人等奖状
+        是我们第十小组的重要贡献者。</string>
+
+    <string name="team03">我叫吉文杰，预备党员，安徽省凤阳县人，是15级软件工程2班的学生，热爱学习，热爱Android，
+        热爱代码，不爱bug，
+        平时和同学友好相处，乐于助人。多次参加各种比赛和活动，连续获得校级奖学金。
+        是我们第十小组的重要贡献者。</string>
 
 </resources>
