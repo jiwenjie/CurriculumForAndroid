@@ -1,5 +1,6 @@
 package com.example.root.curriculum.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  * ======================================
  */
 
-public class ArticleData {
+public class ArticleData implements Serializable {
 
     private DataBean data;
     private int errorCode;
@@ -41,7 +42,7 @@ public class ArticleData {
         this.errorMsg = errorMsg;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable {
 
         private int curPage;
         private int offset;
@@ -107,7 +108,7 @@ public class ArticleData {
             this.datas = datas;
         }
 
-        public static class DatasBean {
+        public static class DatasBean implements Serializable {
 
             private String apkLink;
             private String author;

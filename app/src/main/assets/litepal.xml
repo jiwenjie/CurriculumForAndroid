@@ -3,10 +3,11 @@
 
     <dbname value="Curriculum" />
 
-    <version value="2" />
+    <version value="13" />
 
     <list>
         <mapping class="com.example.root.curriculum.bean.UserMessage" />
+        <mapping class="com.example.root.curriculum.bean.DatasBean" />
     </list>
 
 </litepal>

@@ -6,7 +6,9 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.example.root.curriculum.App;
 import com.example.root.curriculum.R;
+import com.example.root.curriculum.activity.DisplayActivity;
 import com.example.root.curriculum.base.GankBeautyResult;
 import com.example.root.curriculum.bean.WelfarePhotoInfo;
 import com.example.root.curriculum.util.ToastUtil;
@@ -40,6 +42,7 @@ public class SearchAdapter extends BaseQuickAdapter<WelfarePhotoInfo, BaseViewHo
             @Override
             public void onClick(View v) {
                 ToastUtil.showToast("你点击了图片" + item.getDesc());
+                DisplayActivity.runDisplay(App.getInstance(), item.getUrl());
             }
         });
 

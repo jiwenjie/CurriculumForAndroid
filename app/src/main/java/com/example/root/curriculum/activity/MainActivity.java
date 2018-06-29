@@ -4,7 +4,9 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.root.curriculum.App;
 import com.example.root.curriculum.R;
@@ -14,6 +16,7 @@ import com.example.root.curriculum.base.IBasePresenter;
 import com.example.root.curriculum.fragment.HomeFragment;
 import com.example.root.curriculum.fragment.MineFragment;
 import com.example.root.curriculum.fragment.SearchFragment;
+import com.example.root.curriculum.util.NetWorkUtil;
 import com.example.root.curriculum.util.ToastUtil;
 
 import java.util.ArrayList;
@@ -49,6 +52,10 @@ public class MainActivity extends BaseActivity<IBasePresenter> {
     protected void initViews() {
         //设置状态栏透明
         //initSystemBarTint();
+
+        //打印 IP 地址
+        ToastUtil.showToast(NetWorkUtil.getIP(this));
+        Toast.makeText(this, "IP 地址是" + NetWorkUtil.getIP(this), Toast.LENGTH_LONG).show();
 
         viewPager = findViewById(R.id.vp);
         bottomNavigationView = findViewById(R.id.bnv_menu);

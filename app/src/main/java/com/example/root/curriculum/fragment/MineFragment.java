@@ -1,18 +1,21 @@
 package com.example.root.curriculum.fragment;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.root.curriculum.App;
 import com.example.root.curriculum.Constants;
 import com.example.root.curriculum.R;
+import com.example.root.curriculum.activity.CollectionActivity;
+import com.example.root.curriculum.activity.GetFriendsActivity;
 import com.example.root.curriculum.activity.LoginActivity;
 import com.example.root.curriculum.base.BaseFragment;
 import com.example.root.curriculum.base.IBasePresenter;
@@ -33,7 +36,7 @@ public class MineFragment extends BaseFragment<IBasePresenter> {
     @BindView(R.id.tv_view_homepage) TextView tv_view_homepage;
     @BindView(R.id.tv_collection) TextView tv_collection;
     @BindView(R.id.tv_comment) TextView tv_comment;
-    @BindView(R.id.tv_mine_message) TextView tv_mine_message;
+    @BindView(R.id.tv_mine_message) TextView tv_mine_message;   //我的消息，查看联系人
     @BindView(R.id.tv_mine_attention) TextView tv_mine_attention;
     @BindView(R.id.tv_mine_cache) TextView tv_mine_cache;
     @BindView(R.id.tv_watch_history) TextView tv_watch_history;
@@ -61,6 +64,27 @@ public class MineFragment extends BaseFragment<IBasePresenter> {
     @Override
     protected void initViews() {
         initUserPart();
+        doOthers();
+    }
+
+    private void doOthers() {
+
+        tv_collection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(App.getInstance(), CollectionActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //点击我的消息查看联系人
+        tv_mine_message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(App.getInstance(), GetFriendsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     /**
@@ -82,31 +106,62 @@ public class MineFragment extends BaseFragment<IBasePresenter> {
         tv_nickName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (!Constants.IS_LOGIN) {
+                if (!Constants.IS_LOGIN) {
                     //没有登陆
                     Intent intent = new Intent(getContext(), LoginActivity.class);
                     startActivityForResult(intent, 1);
-//                } else {
-//                    ToastUtil.showToast("您已登陆");
-//                }
+                } else {
+                    ToastUtil.showToast("您已登陆");
+                    //设置一个弹出框询问是否退出
+                    askLogout();
+                }
             }
         });
 
     }
 
+    //弹出框询问是否退出登陆
+    private void askLogout() {
+        new AlertDialog.Builder(getContext())
+                .setTitle("提示框")
+                .setMessage("确认退出当前账号吗？")
+                .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        users.logout();
+                        Constants.IS_LOGIN = false;
+                        ToastUtil.showToast("当前账户已退出");
+                        tv_nickName.setText("未登录");
+                        tv_nickName.setTextColor(getResources().getColor(R.color.red));
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create()
+                .show(); //显示出来
+
+    }
+
+    //登陆成功的方法，在Users中调用
     public void onLoginSuccess() {
         SharedPreferences share = getActivity().getSharedPreferences(getResources().getString(R.string.config_file_path), MODE_PRIVATE);
         String username = share.getString("username", "");
         tv_nickName.setText(username);
+        Constants.IS_LOGIN = true;  //设置登陆标记为true
         ToastUtil.showToast(getString(R.string.message_login_success));
     }
 
+    //登陆失败的方法，在Users中调用
     public void onFailed(String event) {
         SharedPreferences share = getActivity().getSharedPreferences(getResources().getString(R.string.config_file_path), MODE_PRIVATE);
         String username = share.getString("username", "");
         if (event.equals("login")) {
             ToastUtil.showToast(username + " " + getResources().getString(R.string.message_login_fail));
-        } else if (event.equals("register")){
+        } else if (event.equals("register")) {
             ToastUtil.showToast(getString(R.string.message_register_failed));
         }
     }
@@ -114,16 +169,16 @@ public class MineFragment extends BaseFragment<IBasePresenter> {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         ToastUtil.showToast("进入onActivityResult");
-        Log.d("MineFragment", "进入onActivity=======================================================");
+        Log.v("MineFragment", "进入onActivity=======================================================");
         if (data == null) {
             return;
         }
         if (resultCode == 1) {
-            Log.d("MineFragment", "进入onActivity     1111111111111=======================================================");
+            Log.v("MineFragment", "进入onActivity     1111111111111=======================================================");
             users.login(data.getStringExtra("username"), data.getStringExtra("password"));
         }
         else if (resultCode == 3) {
-            Log.d("MineFragment", "进入onActivity   33333333333=======================================================");
+            Log.v("MineFragment", "进入onActivity   33333333333=======================================================");
             users.register(data.getStringExtra("username"), data.getStringExtra("password"));
         }
     }

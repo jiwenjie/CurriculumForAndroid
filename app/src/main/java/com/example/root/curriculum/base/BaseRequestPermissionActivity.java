@@ -19,6 +19,8 @@ import com.example.root.curriculum.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.ButterKnife;
+
 public abstract class BaseRequestPermissionActivity extends AppCompatActivity {
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -29,7 +31,6 @@ public abstract class BaseRequestPermissionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     public abstract void requestPermissionResult(boolean allowPermission);
@@ -105,12 +106,6 @@ public abstract class BaseRequestPermissionActivity extends AppCompatActivity {
         if (mayPermission) {
             return true;
         }
-
-//        for (String req : permissions) {
-//            if (shouldShowRequestPermissionRationale(req)) {
-//                showMissingPermissionDialog();
-//            }
-//        }
 
         checkPermissions(permissions);
 

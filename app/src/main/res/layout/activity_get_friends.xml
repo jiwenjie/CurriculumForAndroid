@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/search_toolBar"
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.example.root.curriculum.util.IconFontTextView
+            android:id="@+id/friend_return"
+            android:textColor="@color/white"
+            android:text="@string/ic_return"
+            android:textSize="@dimen/dp_20"
+            android:layout_gravity="start"
+            android:layout_marginRight="15dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:id="@+id/friend_title"
+            android:textSize="@dimen/dp_20"
+            android:text="联系人"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/add_friend"
+            android:layout_gravity="end"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/ic_toolbar_add"
+            android:textColor="@color/white"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+        <com.example.root.curriculum.util.IconFontTextView
+            android:id="@+id/friend_search"
+            android:textColor="@color/white"
+            android:text="@string/ic_search"
+            android:textSize="@dimen/dp_20"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <com.example.multiple_status_view.MultipleStatusView
+        android:layout_below="@id/search_toolBar"
+        android:id="@+id/friend_multipleStatusView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:emptyView="@layout/layout_empty_view"
+        app:errorView="@layout/layout_error_view"
+        app:loadingView="@layout/layout_loading_view"
+        app:noNetworkView="@layout/layout_network_view">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/search_RecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/alpha_05_black"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/padding_tab_layout_bottom" />
+
+    </com.example.multiple_status_view.MultipleStatusView>
+
+
+</RelativeLayout>

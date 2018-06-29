@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,10 +48,9 @@ public class LoginActivity extends BaseActivity<IBasePresenter> {
         clickThing();
     }
 
+
+
     private void clickThing() {
-
-        checkIsSalfe();
-
         //注册的点击事件
         tv_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,50 +85,51 @@ public class LoginActivity extends BaseActivity<IBasePresenter> {
                 if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(userPass) || TextUtils.isEmpty(confirm)) {
                     ToastUtil.showToast("输入不合法，请重新输入");
                 } else {
-                    if (userPass.equals(confirm)) {
+                    if (userPass.length() < 6) {
+                        //长度不符合要求
+                        et_password.setText("");
+                        et_confirm.setText("");
+                        ToastUtil.showToast("密码长度至少为6位");
+                    } else if (userPass.equals(confirm)) {
                         //说明密码相等
                         Intent intent = getIntent();
                         Bundle bun = new Bundle();
                         bun.putString("username", userName);
                         bun.putString("password", userPass);
                         intent.putExtras(bun);
-                        //Constants.IS_LOGIN = true;  //把登陆状态设置为 true
                         intent.putExtras(bun);
                         ToastUtil.showToast("注册成功");
                         LoginActivity.this.setResult(3, intent);
                         LoginActivity.this.finish();
-                        //return;
                     }
                 }
             }
         });
-    }
 
-    private void checkIsSalfe() {
-        userName = et_userName.getText().toString();
-        userPass = et_password.getText().toString();
-        if (!TextUtils.isEmpty(userName) || !TextUtils.isEmpty(userPass)) {
-
-            //说明输入都不为空
-            btn_login.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(userPass)) {
+                    //说明输入都不为空
+                    userName = et_userName.getText().toString();
+                    userPass = et_password.getText().toString();
                     Intent intent = getIntent();
                     Bundle bun = new Bundle();
                     bun.putString("username", userName);
                     bun.putString("password", userPass);
                     intent.putExtras(bun);
-                    Constants.IS_LOGIN = true;  //把登陆状态设置为 true
                     LoginActivity.this.setResult(1, intent);
                     LoginActivity.this.finish();
-                }
-            });
 
-        } else {
-            //输入有为空的部分（不合法的输入）
-            ToastUtil.showToast("用户名或密码不能为空");
-        }
+                } else {
+                    //输入有为空的部分（不合法的输入）
+                    ToastUtil.showToast("用户名或密码不能为空");
+                }
+
+            }
+        });
     }
+
 
     @Override
     protected void onRetry() {
