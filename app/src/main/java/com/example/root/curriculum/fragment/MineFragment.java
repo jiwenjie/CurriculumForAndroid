@@ -1,14 +1,24 @@
 package com.example.root.curriculum.fragment;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.root.curriculum.App;
@@ -43,6 +53,11 @@ public class MineFragment extends BaseFragment<IBasePresenter> {
     @BindView(R.id.tv_mine_cache) TextView tv_mine_cache;
     @BindView(R.id.tv_feedback) TextView tv_aboutMy;        //关于我们的部分
 
+    private Dialog avatar_Img;
+    private CardView cameral;
+    private CardView select_image;
+    private CardView btn_cancel;
+
     //用户登陆部分相关
     private Users users;
     private JsonHandler jsonHandler;
@@ -63,6 +78,7 @@ public class MineFragment extends BaseFragment<IBasePresenter> {
 
     @Override
     protected void initViews() {
+        avatar_Img = new Dialog(getActivity(), R.style.BottomDialog);
         initUserPart();
         doOthers();
     }
@@ -101,6 +117,14 @@ public class MineFragment extends BaseFragment<IBasePresenter> {
             public void onClick(View v) {
                 //点击跳转项目主页
                 WebViewActivity.runActivity(App.getInstance(), "项目主页" , Constants.GIT_ADDRESS);
+            }
+        });
+
+        //点击头像的响应事件
+        iv_avatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setDialog();
             }
         });
     }
@@ -194,8 +218,11 @@ public class MineFragment extends BaseFragment<IBasePresenter> {
         if (resultCode == 1) {
             Log.v("MineFragment", "进入onActivity     1111111111111=======================================================");
             users.login(data.getStringExtra("username"), data.getStringExtra("password"));
-        }
-        else if (resultCode == 3) {
+        } else if (resultCode == 2) {
+            Bundle extras = data.getExtras();
+            Bitmap b = (Bitmap) extras.get("data");
+            iv_avatar.setImageBitmap(b);
+        } else if (resultCode == 3) {
             Log.v("MineFragment", "进入onActivity   33333333333=======================================================");
             users.register(data.getStringExtra("username"), data.getStringExtra("password"));
         }
@@ -205,4 +232,62 @@ public class MineFragment extends BaseFragment<IBasePresenter> {
     protected void onRetry() {
 
     }
+
+    //底部菜单栏，弹出一个选择，提供是选择对于网页的操作
+    private void setDialog() {
+        LinearLayout root = (LinearLayout) LayoutInflater.from(getActivity()).inflate(
+                R.layout.bottom_camera_or_image, null);
+        //初始化视图
+        cameral = root.findViewById(R.id.selected_cameral);
+        select_image = root.findViewById(R.id.select_image);
+        btn_cancel = root.findViewById(R.id.btn_cancel);
+        //最终加载显示视图
+        avatar_Img.setContentView(root);
+        Window dialogWindow = avatar_Img.getWindow();
+        //设置dialog的显示位置
+        dialogWindow.setGravity(Gravity.BOTTOM);
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes(); // 获取对话框当前的参数值
+        lp.x = 0; // 新位置X坐标
+        lp.y = 0; // 新位置Y坐标
+        lp.width = getResources().getDisplayMetrics().widthPixels; // 宽度
+        root.measure(0, 0);
+        lp.height = root.getMeasuredHeight();
+
+        lp.alpha = 9f; // 透明度
+        dialogWindow.setAttributes(lp);
+        avatar_Img.show();
+
+        BottomClick();
+    }
+
+    //底部弹出框的点击监听
+    private void BottomClick() {
+        cameral.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //不论点击谁都会取消显示dialog
+                avatar_Img.dismiss();
+                ToastUtil.showToast("你点击了选择相机");
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, 2);
+            }
+        });
+
+        select_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                avatar_Img.dismiss();
+                ToastUtil.showToast("你点击了选择照片");
+            }
+        });
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                avatar_Img.dismiss();
+                ToastUtil.showToast("你点击了取消按钮");
+            }
+        });
+    }
+
 }

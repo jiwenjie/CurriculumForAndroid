@@ -8,6 +8,7 @@ import com.example.root.curriculum.App;
 import com.example.root.curriculum.R;
 import com.example.root.curriculum.util.JsonThread;
 import com.example.root.curriculum.util.NetWorkUtil;
+import com.example.root.curriculum.util.UtilGetIp;
 
 import java.io.Serializable;
 import java.security.MessageDigest;
@@ -43,7 +44,7 @@ public class Users implements Serializable {
         this.password = password;
         //http://192.168.1.111:3000/json
         String urlStr = resources.getString(R.string.server_url) + "?username=" + username + "&password=" + this.password;
-//        String urlStr = "http://" + NetWorkUtil.getIP(App.getInstance()) + "/json" + "?username=" + username + "&password=" + this.password;
+//        String urlStr = "http://" + UtilGetIp.getIpAddress(App.getInstance()) + "/json" + "?username=" + username + "&password=" + this.password;
         if (register) {
             urlStr += "&register";
         }
