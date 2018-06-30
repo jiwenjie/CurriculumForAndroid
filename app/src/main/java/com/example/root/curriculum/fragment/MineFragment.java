@@ -6,9 +6,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.util.Log;
@@ -36,6 +40,8 @@ import com.example.root.curriculum.util.JsonHandler;
 import com.example.root.curriculum.util.JsonThread;
 import com.example.root.curriculum.util.ToastUtil;
 
+import java.io.File;
+
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -62,6 +68,8 @@ public class MineFragment extends BaseFragment<IBasePresenter> {
     private Users users;
     private JsonHandler jsonHandler;
     private JsonThread jsonThread;
+
+    private Uri imageUri;
 
     public static MineFragment newInstance(String info) {
         Bundle args = new Bundle();
@@ -211,17 +219,13 @@ public class MineFragment extends BaseFragment<IBasePresenter> {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         ToastUtil.showToast("进入onActivityResult");
-        Log.v("MineFragment", "进入onActivity=======================================================");
+        //Log.v("MineFragment", "进入onActivity=======================================================");
         if (data == null) {
             return;
         }
         if (resultCode == 1) {
-            Log.v("MineFragment", "进入onActivity     1111111111111=======================================================");
+            //Log.v("MineFragment", "进入onActivity     1111111111111=======================================================");
             users.login(data.getStringExtra("username"), data.getStringExtra("password"));
-        } else if (resultCode == 2) {
-            Bundle extras = data.getExtras();
-            Bitmap b = (Bitmap) extras.get("data");
-            iv_avatar.setImageBitmap(b);
         } else if (resultCode == 3) {
             Log.v("MineFragment", "进入onActivity   33333333333=======================================================");
             users.register(data.getStringExtra("username"), data.getStringExtra("password"));
@@ -267,9 +271,7 @@ public class MineFragment extends BaseFragment<IBasePresenter> {
             public void onClick(View v) {
                 //不论点击谁都会取消显示dialog
                 avatar_Img.dismiss();
-                ToastUtil.showToast("你点击了选择相机");
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, 2);
+                ToastUtil.showToast("你点击了拍照");
             }
         });
 
