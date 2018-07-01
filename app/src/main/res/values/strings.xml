@@ -60,6 +60,7 @@
     <string name="mine_cache">我的缓存</string>
     <string name="view_history">阅读记录</string>
     <string name="about_my_team">关于我们</string>
+    <string name="new_detail">新闻详情</string>
 
     <string name="loading_text">加载中&#8230;</string>
     <string name="no_network">请检查网络后点击重新加载</string>

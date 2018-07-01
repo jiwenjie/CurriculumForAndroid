@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/zhihu_item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="@dimen/dp_10"
+    android:paddingBottom="@dimen/item_margin"
+    android:paddingTop="@dimen/item_margin"
+    >
+
+    <ImageView
+        android:id="@+id/img_title"
+        android:scaleType="fitXY"
+        android:background="@color/gray"
+        android:layout_width="120dp"
+        android:layout_height="80dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--标题-->
+        <TextView
+            android:id="@+id/item_text_id"
+            android:textStyle="bold"
+            android:text="标题标题"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size"/>
+
+        <!--新闻来源-->
+        <TextView
+            android:id="@+id/item_text_source_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:text="helooeddd"
+            android:textColor="@color/text_source"
+            android:textSize="10sp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -11,10 +11,12 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.multiple_status_view.MultipleStatusView;
 import com.example.root.curriculum.R;
 import com.example.root.curriculum.adapter.ArticleAdapter;
+import com.example.root.curriculum.adapter.NewsAdapter;
 import com.example.root.curriculum.adapter.SearchAdapter;
 import com.example.root.curriculum.base.BaseFragment;
 import com.example.root.curriculum.base.GankBeautyResult;
 import com.example.root.curriculum.base.IBasePresenter;
+import com.example.root.curriculum.bean.NewsList;
 import com.example.root.curriculum.model.Model;
 import com.example.root.curriculum.util.NetWorkUtil;
 import com.example.root.curriculum.util.ToastUtil;
@@ -34,9 +36,9 @@ public class SearchFragment extends BaseFragment<IBasePresenter>
     @BindView(R.id.search_RecyclerView) RecyclerView rv_search;
     @BindView(R.id.search_refresh)  SwipeRefreshLayout layout;
 
-    private SearchAdapter adapter;
+    private NewsAdapter adapter;
 
-    private int page = 1;
+    private int page = 0; //一次加 20
 
     public static SearchFragment newInstance(String info) {
         Bundle args = new Bundle();
@@ -64,14 +66,15 @@ public class SearchFragment extends BaseFragment<IBasePresenter>
 
     private void getHomeData() {
 
+        //调用释放资源，防止内存泄漏
         unsubscribe();
-        disposable = Model.getPicture(page)
-                .subscribe(new Consumer<GankBeautyResult>() {
+        disposable = Model.getNews(page)
+                .subscribe(new Consumer<NewsList>() {
                     @Override
-                    public void accept(GankBeautyResult gankBeautyResult) throws Exception {
+                    public void accept(NewsList newsList) throws Exception {
                         ToastUtil.showToast("加载成功");
                         mLayoutStatusView.showContent();
-                        adapter.addData(gankBeautyResult.beauties);
+                        adapter.addData(newsList.getNewsList());
                     }
                 }, new Consumer<Throwable>() {
                     @Override
@@ -84,7 +87,7 @@ public class SearchFragment extends BaseFragment<IBasePresenter>
 
     //对adapter和recyclerView进行一些设置
     private void setRecyclerView() {
-        adapter = new SearchAdapter(null);
+        adapter = new NewsAdapter(null);
         adapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
         adapter.isFirstOnly(false);
 
@@ -113,7 +116,7 @@ public class SearchFragment extends BaseFragment<IBasePresenter>
 
     @Override
     protected void onRetry() {
-        page++;
+        page += 20;
         getHomeData();
     }
 
@@ -124,7 +127,7 @@ public class SearchFragment extends BaseFragment<IBasePresenter>
             //不隐藏刷新图标
             layout.setRefreshing(false);
             //重新请求网络数据
-            page++;
+            page += 20;
             getHomeData();
         } catch (Exception e) {
             e.printStackTrace();
@@ -133,13 +136,13 @@ public class SearchFragment extends BaseFragment<IBasePresenter>
 
     @Override
     public void onLoadMoreRequested() {
-        page++;
+        page += 20;
         ToastUtil.showToast("当前页数为" + page);
 
         rv_search.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (page * 20 >= 600) {
+                if (page * 20 >= 8000) {
                     //全部加载完成
                     adapter.loadMoreEnd();
                 } else {

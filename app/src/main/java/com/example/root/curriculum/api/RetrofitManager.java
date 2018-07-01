@@ -18,6 +18,7 @@ public class RetrofitManager {
 
     private static ApiService apiService;
     private static GankApi gankApi;
+    private static TopNews newsApi;
     private static OkHttpClient okHttpClient;
     private static Converter.Factory gsonConverterFactory = GsonConverterFactory.create();
     private static CallAdapter.Factory rxJavaCallAdapterFactory = RxJava2CallAdapterFactory.create();
@@ -70,4 +71,20 @@ public class RetrofitManager {
         return gankApi;
     }
 
+    //返回 newsApi 的部分
+    public static TopNews getNewsApi() {
+
+        if (newsApi == null) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .client(getClient())
+//                    .baseUrl("http://c.m.163.com/nc/article/")
+                    .baseUrl("http://c.m.163.com/")
+                    .addCallAdapterFactory(rxJavaCallAdapterFactory)
+                    .addConverterFactory(gsonConverterFactory)
+                    .build();
+            newsApi = retrofit.create(TopNews.class);
+        }
+
+        return newsApi;
+    }
 }

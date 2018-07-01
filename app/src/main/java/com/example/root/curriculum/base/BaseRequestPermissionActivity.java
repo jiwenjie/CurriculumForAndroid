@@ -95,7 +95,7 @@ public abstract class BaseRequestPermissionActivity extends AppCompatActivity {
         }
 
         for (String req : permissions) {
-            if (checkSelfPermission(req) != PackageManager.PERMISSION_GRANTED) {
+            if (checkSelfPermission(req) != PackageManager.PERMISSION_GRANTED) {    //确定是否你授予了指定的权限
                 mayPermission = false;
                 break;
             } else {
