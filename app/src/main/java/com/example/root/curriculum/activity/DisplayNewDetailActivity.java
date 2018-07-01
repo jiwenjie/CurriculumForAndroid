@@ -71,7 +71,6 @@ public class DisplayNewDetailActivity extends AppCompatActivity {
             //判断是否为空
             if_DATAISNULL();
         }
-
     }
 
     private void disImage() {

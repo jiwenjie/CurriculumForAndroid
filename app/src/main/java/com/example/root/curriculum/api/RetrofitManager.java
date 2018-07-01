@@ -67,13 +67,11 @@ public class RetrofitManager {
 
             gankApi = retrofit.create(GankApi.class);
         }
-
         return gankApi;
     }
 
     //返回 newsApi 的部分
     public static TopNews getNewsApi() {
-
         if (newsApi == null) {
             Retrofit retrofit = new Retrofit.Builder()
                     .client(getClient())

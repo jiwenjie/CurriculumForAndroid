@@ -97,7 +97,6 @@ public class GetFriendsActivity extends BaseRequestPermissionActivity
 
     //初始化的一些操作
     private void initViews() {
-
         //获取实例
         statusView = findViewById(R.id.friend_multipleStatusView);
         ift_return = findViewById(R.id.friend_return);
@@ -208,7 +207,6 @@ public class GetFriendsActivity extends BaseRequestPermissionActivity
                 person.setUserName(name);
 //                person.setPhoneNumber("110");
                 personList.add(person);
-
             }
             if (phones != null) phones.close();
         }
