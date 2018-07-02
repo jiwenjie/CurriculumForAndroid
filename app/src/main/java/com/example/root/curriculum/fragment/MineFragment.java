@@ -207,27 +207,26 @@ public class MineFragment extends BaseFragment<IBasePresenter> {
 
     //登陆失败的方法，在Users中调用
     public void onFailed(String event) {
+        ToastUtil.showToast("操作失败，请检查后重新操作");
+
         SharedPreferences share = getActivity().getSharedPreferences(getResources().getString(R.string.config_file_path), MODE_PRIVATE);
         String username = share.getString("username", "");
         if (event.equals("login")) {
-            ToastUtil.showToast(username + " " + getResources().getString(R.string.message_login_fail));
+            ToastUtil.showToast(username + " " + "登陆失败");
         } else if (event.equals("register")) {
-            ToastUtil.showToast(getString(R.string.message_register_failed));
+            ToastUtil.showToast("注册失败");
         }
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         ToastUtil.showToast("进入onActivityResult");
-        //Log.v("MineFragment", "进入onActivity=======================================================");
         if (data == null) {
             return;
         }
         if (resultCode == 1) {
-            //Log.v("MineFragment", "进入onActivity     1111111111111=======================================================");
             users.login(data.getStringExtra("username"), data.getStringExtra("password"));
         } else if (resultCode == 3) {
-            Log.v("MineFragment", "进入onActivity   33333333333=======================================================");
             users.register(data.getStringExtra("username"), data.getStringExtra("password"));
         }
     }

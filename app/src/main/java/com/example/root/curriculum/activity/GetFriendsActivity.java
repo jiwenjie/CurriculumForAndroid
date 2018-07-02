@@ -153,7 +153,7 @@ public class GetFriendsActivity extends BaseRequestPermissionActivity
         Uri baseUri;
         if (mCurFilter != null) {
             baseUri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_URI,
-                    Uri.encode(mCurFilter));
+                    Uri.encode(mCurFilter));    //拼接方法，把第二个参数连接到末尾
         } else {
             baseUri = ContactsContract.Contacts.CONTENT_URI;
         }

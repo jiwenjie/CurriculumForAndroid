@@ -88,18 +88,24 @@ public class DisplayNewDetailActivity extends AppCompatActivity {
         WebConnectUtil.sendRequestWidthOkHttp("http://c.m.163.com/nc/article/" + bean.getDocid() +"/full.html", new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                ToastUtil.showToast("获取数据失败");
-                if_DATAISNULL();
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ToastUtil.showToast("获取数据失败");
+                        if_DATAISNULL();
+                    }
+                });
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                ToastUtil.showToast("获取数据成功");
-                hideLoading();
                 final String data = response.body().string();
                runOnUiThread(new Runnable() {
                    @Override
                    public void run() {
+                       hideLoading();
+                       ToastUtil.showToast("获取数据成功");
                        parseDataWithJson(data);
                    }
                });
@@ -134,7 +140,6 @@ public class DisplayNewDetailActivity extends AppCompatActivity {
             String body = seObj.getString("body");
             Log.v("Detail", body);
             tv_detail.setText(body);
-            //ToastUtil.showToast(body);
         } catch (Exception e) {
             e.printStackTrace();
         }

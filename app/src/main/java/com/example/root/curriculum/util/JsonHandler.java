@@ -39,7 +39,7 @@ public class JsonHandler extends Handler {
         try {
             Boolean result = obj.getBoolean("result");
             String event = obj.getString("event");
-            if (result == false) {
+            if (!result) {
                 Log.v("info", "json result false, event is " + event + ", message is " + obj.getString("msg"));
                 mineFragment.onFailed(event);
                 return;

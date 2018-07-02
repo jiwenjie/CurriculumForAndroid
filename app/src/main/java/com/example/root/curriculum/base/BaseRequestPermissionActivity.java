@@ -37,7 +37,6 @@ public abstract class BaseRequestPermissionActivity extends AppCompatActivity {
 
     /**
      * @param permissions
-     * @since 2.5.0
      */
     private void checkPermissions(String... permissions) {
         List<String> needRequestPermissonList = findDeniedPermissions(permissions);
@@ -52,10 +51,6 @@ public abstract class BaseRequestPermissionActivity extends AppCompatActivity {
 
     /**
      * 获取权限集中需要申请权限的列表
-     *
-     * @param permissions
-     * @return
-     * @since 2.5.0
      */
     private List<String> findDeniedPermissions(String[] permissions) {
         List<String> needRequestPermissonList = new ArrayList<String>();

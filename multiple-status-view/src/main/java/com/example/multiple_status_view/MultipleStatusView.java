@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 
 /**
- * 类描述：  一个方便在多种状态切换的view
+ * 类描述： 个方便在多种状态切换的view
  */
 @SuppressWarnings("unused")
 public class MultipleStatusView extends RelativeLayout {
@@ -68,12 +68,14 @@ public class MultipleStatusView extends RelativeLayout {
         mInflater = LayoutInflater.from(getContext());
     }
 
-    @Override protected void onFinishInflate() {
+    @Override
+    protected void onFinishInflate() {
         super.onFinishInflate();
         showContent();
     }
 
-    @Override protected void onDetachedFromWindow() {
+    @Override
+    protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         clear(mEmptyView, mLoadingView, mErrorView, mNoNetworkView);
         if (null != mOtherIds) {

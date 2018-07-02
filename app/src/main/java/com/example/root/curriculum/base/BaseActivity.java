@@ -106,7 +106,7 @@ public abstract class BaseActivity<T extends IBasePresenter> extends AppCompatAc
         if (dialog == null) {
             dialog = new ProgressDialog(this);
             dialog.setMessage("正在加载...");
-            dialog.setCanceledOnTouchOutside(false);
+            dialog.setCanceledOnTouchOutside(false);    //设置不可点击
         }
         dialog.show();
     }

@@ -75,7 +75,6 @@ public class RetrofitManager {
         if (newsApi == null) {
             Retrofit retrofit = new Retrofit.Builder()
                     .client(getClient())
-//                    .baseUrl("http://c.m.163.com/nc/article/")
                     .baseUrl("http://c.m.163.com/")
                     .addCallAdapterFactory(rxJavaCallAdapterFactory)
                     .addConverterFactory(gsonConverterFactory)
