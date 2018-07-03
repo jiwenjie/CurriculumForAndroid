@@ -19,7 +19,7 @@ import java.security.NoSuchAlgorithmException;
  */
 public class Users implements Serializable {
 
-    private static final long serialVersionUID = -7060210544600464481L;
+//    private static final long serialVersionUID = -7060210544600464481L;
     private String username;
     private String password;
     private SharedPreferences share;

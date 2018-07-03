@@ -5,7 +5,10 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.root.curriculum.App;
@@ -54,8 +57,8 @@ public class MainActivity extends BaseActivity<IBasePresenter> {
         //initSystemBarTint();
 
         //打印 IP 地址
-        ToastUtil.showToast(NetWorkUtil.getIP(this));
-        Toast.makeText(this, "IP 地址是" + NetWorkUtil.getIP(this), Toast.LENGTH_LONG).show();
+//        ToastUtil.showToast(NetWorkUtil.getIP(this));
+//        Toast.makeText(this, "IP 地址是" + NetWorkUtil.getIP(this), Toast.LENGTH_LONG).show();
 
         viewPager = findViewById(R.id.vp);
         bottomNavigationView = findViewById(R.id.bnv_menu);
@@ -117,9 +120,24 @@ public class MainActivity extends BaseActivity<IBasePresenter> {
         if (System.currentTimeMillis() - firstPressedTime < 2000) {
             super.onBackPressed();
         } else {
-            ToastUtil.showToast("再按一次退出程序");
+            myToast();
+//            ToastUtil.showToast("再按一次退出程序");
+//            Toast toast = Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT);
+//            toast.setGravity(Gravity.CENTER, 0, 0);
+//            toast.show();
             firstPressedTime = System.currentTimeMillis();
             App.exitAllActivity();
         }
+    }
+
+    private void myToast() {
+        View toastRoot = getLayoutInflater().inflate(R.layout.item_my_toast, null);
+        TextView tv = toastRoot.findViewById(R.id.dis_toast);
+        //设置显示内容
+        tv.setText("再按一次退出程序");
+        Toast toast = new Toast(this);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setView(toastRoot);
+        toast.show();
     }
 }

@@ -64,6 +64,7 @@ public class JsonThread implements Runnable {
                     reader.close();
                     conn.disconnect();
                     JSONObject obj = new JSONObject(strBuilder.toString());
+//                    String event = obj.getString("event");
                     Log.v("info", "=====================================信息发送成功===================================");
                     Message msg = new Message();
                     msg.obj = obj;
