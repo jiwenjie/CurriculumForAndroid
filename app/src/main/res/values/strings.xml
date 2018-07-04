@@ -35,7 +35,6 @@
     <string name="message_register_failed">注册失败</string>
     <string name="message_add_calendar_ok">添加成功</string>
 
-    <string name="text_calendar_title">标题</string>
     <string name="text_OK">确定</string>
     <string name="config_file_path">config</string>
     <string name="text_username">用户名</string>
@@ -44,13 +43,14 @@
     <string name="text_register">注册</string>
     <string name="text_password_confirm_failed">密码不一致</string>
     <string name="text_password_empty">密码为空</string>
-    <string name="server_url">http://192.168.1.102:3000/json</string>
+    <string name="server_url">http://10.105.3.107:3000/json</string>
 
     <string name="video_offline">缓存</string>
     <string name="video_attention">+ 关注</string>
     <string name="video_end"> - The End-</string>
 
     <string name="nickname">Jiwenjie</string>
+    <string name="team_name">TeamTen</string>
     <string name="view_homepage">查看项目主页 ></string>
 
     <string name="collection">收藏</string>

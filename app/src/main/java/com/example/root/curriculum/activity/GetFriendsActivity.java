@@ -171,7 +171,7 @@ public class GetFriendsActivity extends BaseRequestPermissionActivity
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
 
-        statusView.showContent();
+              statusView.showContent();
 
         if (cursor == null) {
             Log.d(TAG, "系统联系人数据为空");

@@ -121,10 +121,7 @@ public class MainActivity extends BaseActivity<IBasePresenter> {
             super.onBackPressed();
         } else {
             myToast();
-//            ToastUtil.showToast("再按一次退出程序");
-//            Toast toast = Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT);
-//            toast.setGravity(Gravity.CENTER, 0, 0);
-//            toast.show();
+
             firstPressedTime = System.currentTimeMillis();
             App.exitAllActivity();
         }

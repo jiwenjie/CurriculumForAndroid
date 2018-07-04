@@ -55,6 +55,7 @@ public class DisplayNewDetailActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_new_detail);
+
         bean = (NewsBean) getIntent().getSerializableExtra("bean");
 
         showLoading();
@@ -101,6 +102,7 @@ public class DisplayNewDetailActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 final String data = response.body().string();
+
                runOnUiThread(new Runnable() {
                    @Override
                    public void run() {

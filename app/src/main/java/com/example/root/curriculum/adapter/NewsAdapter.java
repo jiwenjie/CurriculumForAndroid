@@ -27,8 +27,15 @@ public class NewsAdapter extends BaseQuickAdapter<NewsBean, BaseViewHolder> {
     protected void convert(BaseViewHolder helper, final NewsBean item) {
         helper.setText(R.id.item_text_id, item.getTitle());
         helper.setText(R.id.item_text_source_id, item.getSource());
+
         ImageView imageView = helper.getView(R.id.img_title);   //获取实例
 
+//        imageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
         Glide.with(App.getInstance())
                 .load(item.getImgsrc())
                 .override(120, 80)

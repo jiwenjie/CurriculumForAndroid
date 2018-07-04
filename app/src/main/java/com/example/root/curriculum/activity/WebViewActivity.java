@@ -67,6 +67,7 @@ public class WebViewActivity extends BaseActivity<IBasePresenter> {
 
         web_multile = mLayoutStatusView;
         web_multile.showContent();
+
         url = getIntent().getStringExtra(URL);
         String title = getIntent().getStringExtra(TITLE);
         mWebViewDialog = new Dialog(this, R.style.BottomDialog);
@@ -121,6 +122,7 @@ public class WebViewActivity extends BaseActivity<IBasePresenter> {
         btn_cancel = root.findViewById(R.id.btn_cancel);
         //最终加载显示视图
         mWebViewDialog.setContentView(root);
+
         Window dialogWindow = mWebViewDialog.getWindow();
         //设置dialog的显示位置
         dialogWindow.setGravity(Gravity.BOTTOM);

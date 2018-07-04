@@ -12,6 +12,6 @@ public interface ApiService {
 
     @GET("/article/list/{page}/json")
     Observable<ArticleData> getArticle(@Path("page") int page);
+//    Call
     //Observable<ArticleData> getArticle();
-
 }

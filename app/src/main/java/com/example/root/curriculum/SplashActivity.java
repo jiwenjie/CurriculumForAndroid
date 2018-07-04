@@ -26,6 +26,7 @@ public class SplashActivity extends AppCompatActivity {
         int flag = WindowManager.LayoutParams.FLAG_FULLSCREEN;
         //设置当前窗体为全屏显示
         window.setFlags(flag, flag);
+
         setContentView(R.layout.activity_splash);
 
         handler = new Handler();

@@ -1,5 +1,6 @@
 package com.example.root.curriculum.activity;
 
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.media.MediaPlayer;
@@ -30,7 +31,6 @@ public class AboutMyTeamActivity extends AppCompatActivity {
 
         //打算开启当前活动的时候播放音乐，退出的时候取消
         try {
-
             player = MediaPlayer.create(App.getInstance(), R.raw.sky_city);
             player.prepare();
             player.setLooping(true);    //开启循环播放
@@ -38,9 +38,8 @@ public class AboutMyTeamActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        player.start();
         ToastUtil.showToast("开始播放音乐");
-
+        player.start();
 
         ift_return = findViewById(R.id.about_return);
         ift_return.setOnClickListener(new View.OnClickListener() {

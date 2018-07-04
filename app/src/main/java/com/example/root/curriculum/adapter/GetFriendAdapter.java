@@ -49,6 +49,12 @@ public class GetFriendAdapter extends BaseQuickAdapter<PhonePerson, BaseViewHold
         }
 
         //拒绝，取消
+//        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//
+//            }
+//        });
         builder.setNegativeButton(R.string.cancel,
                 new DialogInterface.OnClickListener() {
                     @Override

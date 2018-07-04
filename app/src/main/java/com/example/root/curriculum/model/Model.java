@@ -9,6 +9,9 @@ import com.example.root.curriculum.bean.WelfarePhotoInfo;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.ObservableTransformer;
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -44,9 +47,15 @@ public class Model {
     //获取详细的新闻数据
     public static Observable<String> getNewDetail(String new_id) {
         return RetrofitManager.getNewsApi().getNewsDetail(new_id)
-                .subscribeOn(Schedulers.io())
-                .unsubscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .compose(new ObservableTransformer<String, String>() {
+                    @Override
+                    public ObservableSource<String> apply(Observable<String> upstream) {
+                        return null;
+                    }
+                });
+//                .subscribeOn(Schedulers.io())
+//                .unsubscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread());
     }
 
 }

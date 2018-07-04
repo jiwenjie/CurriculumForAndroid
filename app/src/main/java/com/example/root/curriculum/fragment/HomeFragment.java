@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -19,7 +20,10 @@ import com.example.root.curriculum.model.Model;
 import com.example.root.curriculum.util.NetWorkUtil;
 import com.example.root.curriculum.util.ToastUtil;
 
+import org.reactivestreams.Subscriber;
+
 import butterknife.BindView;
+import io.reactivex.Observer;
 import io.reactivex.functions.Consumer;
 
 public class HomeFragment extends BaseFragment<IBasePresenter>
@@ -68,6 +72,7 @@ public class HomeFragment extends BaseFragment<IBasePresenter>
         adapter.setOnLoadMoreListener(this, rv_home);
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+//        StaggeredGridLayoutManager gridLayoutManager = new StaggeredGridLayoutManager(2, 2);
 
         //设置有关refresh的部分
         layout.setOnRefreshListener(this);
@@ -80,7 +85,6 @@ public class HomeFragment extends BaseFragment<IBasePresenter>
 
     //获取数据部分
     private void getHomeData() {
-
         unsubscribe();
         disposable = Model.getArtData(page)
                 .subscribe(new Consumer<ArticleData>() {
@@ -98,7 +102,9 @@ public class HomeFragment extends BaseFragment<IBasePresenter>
                         _IfError();
                     }
                 });
+
     }
+
 
 
     //当获取数据出现错误的处理
